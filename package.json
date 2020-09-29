@@ -15,7 +15,10 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "babel-plugin-transform-react-pug": "^7.0.1",
     "concurrently": "^5.3.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "pug-loader": "^2.4.0",
+    "react-pug": "^3.0.0"
   }
 }

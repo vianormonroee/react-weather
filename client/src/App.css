@@ -1,0 +1,101 @@
+.root {
+    background-color: #498CEC;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 75px 100px 122px 100px;
+    height: 100%
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/Lato-Regular.ttf')
+}
+
+div {
+    color: white;
+    font-family: 'Lato';
+}
+
+/* .head {
+    background-color: #498CEC;
+} */
+
+button {
+    background-color: rgba(256, 256, 256, 0);
+    border: none
+}
+
+button:hover {
+    background-color: rgba(256, 256, 256, 0.2);
+    cursor: pointer
+}
+
+
+button:active {
+    border: none;
+    background-color: rgba(256, 256, 256, 0.6)
+}
+
+button:focus {
+    outline: none
+}
+
+.locationName {
+    font-size: 50px;
+    line-height: 60px
+}
+
+.temperatureLabel {
+    font-size: 180px;
+    line-height: 216px;
+}
+
+.description {
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.changeLocation {
+    opacity: 60%;
+    font-family: Lato;
+    font-size: 18px;
+    line-height: 54px;
+    margin-right: 16px;
+}
+
+.temperature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.locationOptions {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.propTitle {
+    font-size: 18px;
+    line-height: 54px;
+    opacity: 60%;
+}
+
+.main {
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.propValue {
+    font-size: 25px;
+    line-height: 30px;
+}
