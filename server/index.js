@@ -4,22 +4,32 @@ const axios = require('axios')
 
 const app = express()
 
-const apiUrl = 'http://api.openweathermap.org/data/2.5/weather'
-
 app.get('/', (req, res) => {
-  console.log('Hello!', { conf })
   res.end()
 })
 
 app.get('/getInfo', async (req, res) => {
-  const { query: { lat, lon } } = req
+  const apiUrl = 'http://api.openweathermap.org/data/2.5/weather'
+  const { query } = req
+
+  if (!query.units) query.units = 'metric'
+
+  const weatherApiQuery = Object.keys(query)
+    .map(key => `${key}=${query[key]}`)
+    .join('&')
+
   let info
+
+  console.log(`${apiUrl}?${weatherApiQuery}&lang=ru&appid=${WEATHER_API_KEY}`);
+
   try {
-    info = await axios.get(`${apiUrl}?lat=${lat}&lon=${lon}&lang=ru&units=metric&appid=${WEATHER_API_KEY}`)
-    console.log({info})
+    info = await axios.get(
+      `${apiUrl}?${weatherApiQuery}&lang=ru&appid=${WEATHER_API_KEY}`
+    )
   } catch (err) {
     res.json(err)
   }
+
   res.json(info.data)
 })
 

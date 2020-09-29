@@ -17,10 +17,6 @@ div {
     font-family: 'Lato';
 }
 
-/* .head {
-    background-color: #498CEC;
-} */
-
 button {
     background-color: rgba(256, 256, 256, 0);
     border: none
@@ -34,16 +30,24 @@ button:hover {
 
 button:active {
     border: none;
-    background-color: rgba(256, 256, 256, 0.6)
+    background-color: rgba(256, 256, 256, 0.5)
 }
 
 button:focus {
     outline: none
 }
 
+/* .passiveButton {
+    background-color: rgba(256, 256, 256, 0)
+}
+
+.activeButton {
+    background-color: rgba(256, 256, 256, 0.3);
+} */
+
 .locationName {
     font-size: 50px;
-    line-height: 60px
+    line-height: 75px
 }
 
 .temperatureLabel {
@@ -59,7 +63,6 @@ button:focus {
 
 .changeLocation {
     opacity: 60%;
-    font-family: Lato;
     font-size: 18px;
     line-height: 54px;
     margin-right: 16px;
@@ -98,4 +101,67 @@ button:focus {
 .propValue {
     font-size: 25px;
     line-height: 30px;
+}
+
+.activeLocation {
+    font-size: 18px;
+    line-height: 54px;
+    margin-right: 16px;
+}
+
+.metric {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.celsius {
+    padding: 0 20px;
+    border-color: #fff;
+    border-style: solid;
+    color: #fff;
+    opacity: 60%;
+    font-size: 18px;
+    line-height: 54px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.fahrenheit {
+    padding: 0 20px;
+    border-color: #fff;
+    border-style: solid;
+    color: #fff;
+    opacity: 60%;
+    font-size: 18px;
+    line-height: 54px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px
+}
+
+.celsius:focus .fahrenheit:focus {
+    opacity: 100%;
+    background-color: rgba(255, 255, 255, 0.4)
+}
+
+.metricContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 28px
 }
