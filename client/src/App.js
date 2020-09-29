@@ -69,10 +69,6 @@ function App() {
     })
   }
 
-  return pug`
-    div
-  `
-
   return (
     <div className={'root'}>
       <div className={'head'}>
