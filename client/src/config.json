@@ -1,0 +1,6 @@
+{
+  "WEATHER_API_KEY": "a04a4531fdf604c08536358debb1a59a",
+  "BASE_URL": "http://localhost:3000",
+  "HOST": "localhost",
+  "PORT": "3001"
+}
