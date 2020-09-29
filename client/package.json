@@ -29,22 +29,7 @@
       "last 1 safari version"
     ]
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      "transform-react-pug",
-      "transform-react-jsx",
-      "transform-jsx-css-modules"
-    ]
-  },
-  "devDependencies": {
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-plugin-transform-react-pug": "^7.0.1",
-    "eslint-plugin-react-pug": "^0.8.4",
-    "pug": "^3.0.0",
-    "pug-loader": "^2.4.0",
-    "react-pug": "^3.0.0"
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
