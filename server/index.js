@@ -11,15 +11,15 @@ app.get('/', (req, res) => {
 
 app.get('/getInfo', async (req, res) => {
   // TODO: fix CORS error because of difference between client and server urls
-  // let info
-  // try {
-  //   info = await request.get(
-  //     `api.openweathermap.org/data/2.5/weather?q=London&appid=${WEATHER_API_KEY}`
-  //   )
-  // } catch (err) {
-  //   res.json(err)
-  // }
-  res.end()
+  let info
+  try {
+    info = await request.get(
+      `http://api.openweathermap.org/data/2.5/weather?q=London&appid=${WEATHER_API_KEY}`
+    )
+  } catch (err) {
+    res.json(err)
+  }
+  res.json(info)
 })
 
 app.listen(PORT, () => {
