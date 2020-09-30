@@ -10,6 +10,10 @@ function App() {
   const [units, setUnits] = useState('celsius')
 
   useEffect(() => {
+    getInfo(position)
+  }, [position])
+
+  function getPos() {
     const success = pos => setPosition(pos)
     const error = err => console.warn({ Error: err })
 
@@ -19,11 +23,7 @@ function App() {
         timeout: 5000,
       })
     }
-  }, [])
-
-  useEffect(() => {
-    if (position) getInfo(position)
-  }, [position])
+  }
 
   async function getInfo(pos) {
     const { data: resData } = await api.getInfo(pos)
@@ -31,7 +31,6 @@ function App() {
     if (resData.code) return console.warn({ Error: resData.code })
     if (resData.message) return console.warn({ Error: resData.message })
 
-    console.log(resData)
     let {
       name: location,
       weather: [{ description, id: weatherId, main: weatherType }],
@@ -39,8 +38,6 @@ function App() {
       main: { pressure, temp, humidity },
       clouds: { all: cloudiness },
     } = resData
-
-    console.log(weatherType, 'weatherType')
 
     const windDirections = {
       N: 'Северный',
@@ -86,15 +83,12 @@ function App() {
     })
   }
 
-  function toFahrenheit (num) {
-    const fahrenheitTemp = (num * (9/5)) + 32
+  function toFahrenheit(num) {
+    const fahrenheitTemp = num * (9 / 5) + 32
     return fahrenheitTemp.toFixed(0)
   }
 
   if (!data) return null
-
-  console.log(position, 'POS')
-  // const backgroundColor = 'red'
 
   return (
     <div className={'root'} style={{ backgroundColor: data.preset[1] }}>
@@ -105,7 +99,7 @@ function App() {
             <div className={'changeLocation'}>{'Сменить город'}</div>
             <button
               className={position ? 'activeButton' : 'passiveButton'}
-              onClick={() => null}
+              onClick={() => getPos()}
             >
               <div className={'locationOptions'}>
                 <img src="http://localhost:3000/location.svg"></img>
@@ -153,7 +147,7 @@ function App() {
           <img src={'http://localhost:3000/' + data.preset[0] + '.svg'}></img>
           <div className={'temperatureLabel'}>
             {(units === 'fahrenheit' ? toFahrenheit(data.temp) : data.temp) +
-              (units === 'celsius' ? '°' : 'F')}
+              (units === 'celsius' ? '°' : '°F')}
           </div>
         </div>
         <div className={'description'}>{data.description}</div>

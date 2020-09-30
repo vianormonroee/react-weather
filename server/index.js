@@ -20,8 +20,6 @@ app.get('/getInfo', async (req, res) => {
 
   let info
 
-  console.log(`${apiUrl}?${weatherApiQuery}&lang=ru&appid=${WEATHER_API_KEY}`);
-
   try {
     info = await axios.get(
       `${apiUrl}?${weatherApiQuery}&lang=ru&appid=${WEATHER_API_KEY}`

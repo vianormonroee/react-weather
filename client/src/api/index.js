@@ -5,7 +5,6 @@ export default class Api {
   static async getInfo(position = {}) {
     if (!position.coords) position = 'omsk'
 
-    // position = 'london'
     const query = Api._getQuery(position)
 
     const res = await axios.get(`${BASE_URL}/getInfo?${query}`)
