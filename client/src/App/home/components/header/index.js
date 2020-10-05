@@ -53,8 +53,14 @@ function Header({ position, units, locationName, setPosition, setUnits }) {
               onClick={getPos}
             >
               <div className={'locationOptions'}>
-                <img alt='' src="http://localhost:3000/location.svg" />
-                <div className={position ? 'activeLocation' : 'changeLocation'}>
+                <img alt="" src="http://localhost:3000/location.svg" />
+                <div
+                  className={
+                    position && position.coords
+                      ? 'activeLocation'
+                      : 'changeLocation'
+                  }
+                >
                   {'Мое местоположение'}
                 </div>
               </div>

@@ -3,8 +3,6 @@ import { Header } from './components/index'
 import api from '../../api/index'
 import './index.css'
 
-const HPa_TO_MMHg = 0.75
-
 function Home() {
   const [data, setData] = useState()
   const [position, setPosition] = useState()
@@ -19,58 +17,7 @@ function Home() {
     if (!resData) return
     if (resData.code) return console.warn({ Error: resData.code })
     if (resData.message) return console.warn({ Error: resData.message })
-
-    let {
-      name: location,
-      weather: [{ description, id: weatherId, main: weatherType }],
-      wind: { deg, speed: windSpeed },
-      main: { pressure, temp, humidity },
-      clouds: { all: cloudiness },
-    } = resData
-
-    const windDirections = {
-      N: 'Северный',
-      E: 'Восточный',
-      S: 'Южный',
-      W: 'Западный',
-    }
-
-    const weatherPresets = {
-      Clouds:
-        weatherId === 801 ? ['partly_cloudy', '#498CEC'] : ['cloud', '#498CEC'],
-      Snow: ['rain', '#7290B9'],
-      Clear: ['sun', '#3CB2E8'],
-      Drizzle: ['rain', '#7290B9'],
-      Rain: ['rain', '#7290B9'],
-      Thunderstorm: ['storm', '#4D5D73'],
-    }
-
-    let windDirection
-
-    let preset = weatherPresets[weatherType] || ['cloud', '#8AADDE']
-
-    pressure *= HPa_TO_MMHg
-    temp = temp.toFixed(0)
-    pressure = pressure.toFixed(0)
-    windSpeed = windSpeed.toFixed(0)
-
-    if (deg < 90) windDirection = windDirections['N']
-    else if (deg < 180) windDirection = windDirections['E']
-    else if (deg < 270) windDirection = windDirections['S']
-    else windDirection = windDirections['W']
-
-    setData({
-      location,
-      description,
-      weatherType,
-      windDirection,
-      windSpeed,
-      pressure,
-      temp,
-      preset,
-      humidity,
-      cloudiness,
-    })
+    setData(resData)
   }
 
   function toFahrenheit(num) {
@@ -91,7 +38,10 @@ function Home() {
       />
       <div className={'main'}>
         <div className={'temperature'}>
-          <img alt='' src={'http://localhost:3000/' + data.preset[0] + '.svg'} />
+          <img
+            alt=""
+            src={'http://localhost:3000/' + data.preset[0] + '.svg'}
+          />
           <div className={'temperatureLabel'}>
             {(units === 'fahrenheit' ? toFahrenheit(data.temp) : data.temp) +
               (units === 'celsius' ? '°' : '°F')}
