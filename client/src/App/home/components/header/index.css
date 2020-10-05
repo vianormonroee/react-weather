@@ -1,58 +1,33 @@
-.root {
-    background-color: #498CEC;
+.searchBox {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 75px 100px 122px 100px;
-    height: 100%
+    flex-direction: row;
 }
 
-@font-face {
-    font-family: 'Lato';
-    src: url('/Lato-Regular.ttf')
+.submitButton {
+    font-size: 30px;
+    line-height: 36px;
+    height: 97px;
+    background-color: #fff;
+    text-decoration: underline;
+    text-decoration-color: #498CEC;
+    padding: 0 30px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #498CEC
 }
 
-div {
-    color: white;
-    font-family: 'Lato';
+.submitButton:hover {
+    background-color: #fff;
 }
 
-button {
-    background-color: rgba(256, 256, 256, 0);
-    border: none
+.submitButton:active {
+    color: red;
+    text-decoration-color: red;
 }
-
-button:hover {
-    background-color: rgba(256, 256, 256, 0.2);
-    cursor: pointer
-}
-
-
-button:active {
-    border: none;
-    background-color: rgba(256, 256, 256, 0.5)
-}
-
-button:focus {
-    outline: none
-}
-
-/* .passiveButton {
-    background-color: rgba(256, 256, 256, 0)
-}
-
-.activeButton {
-    background-color: rgba(256, 256, 256, 0.3);
-} */
 
 .locationName {
     font-size: 50px;
     line-height: 75px
-}
-
-.temperatureLabel {
-    font-size: 180px;
-    line-height: 216px;
 }
 
 .description {
@@ -68,39 +43,9 @@ button:focus {
     margin-right: 16px;
 }
 
-.temperature {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
 .locationOptions {
     display: flex;
     flex-direction: row;
-}
-
-.footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.propTitle {
-    font-size: 18px;
-    line-height: 54px;
-    opacity: 60%;
-}
-
-.main {
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.propValue {
-    font-size: 25px;
-    line-height: 30px;
 }
 
 .activeLocation {

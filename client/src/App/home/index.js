@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import api from './api/index.js'
-import './App.css'
+import { Header } from './components/index'
+import api from '../../api/index'
+import './index.css'
 
 const HPa_TO_MMHg = 0.75
 
-function App() {
+function Home() {
   const [data, setData] = useState()
   const [position, setPosition] = useState()
   const [units, setUnits] = useState('celsius')
+  const [searchText, setSearchText] = useState('')
 
   useEffect(() => {
     getInfo(position)
   }, [position])
-
-  function getPos() {
-    const success = pos => setPosition(pos)
-    const error = err => console.warn({ Error: err })
-
-    if (navigator.geolocation) {
-      // get current geoposition of user
-      navigator.geolocation.getCurrentPosition(success, error, {
-        timeout: 5000,
-      })
-    }
-  }
 
   async function getInfo(pos) {
     const { data: resData } = await api.getInfo(pos)
@@ -63,6 +53,7 @@ function App() {
     pressure *= HPa_TO_MMHg
     temp = temp.toFixed(0)
     pressure = pressure.toFixed(0)
+    windSpeed = windSpeed.toFixed(0)
 
     if (deg < 90) windDirection = windDirections['N']
     else if (deg < 180) windDirection = windDirections['E']
@@ -88,60 +79,22 @@ function App() {
     return fahrenheitTemp.toFixed(0)
   }
 
+  function onInputChange(event) {
+    setSearchText(event.target.value)
+  }
+
   if (!data) return null
 
+  console.log(searchText, 'st')
   return (
     <div className={'root'} style={{ backgroundColor: data.preset[1] }}>
-      <div className={'head'}>
-        <div className={'location'}>
-          <div className={'locationName'}>{data.location}</div>
-          <div className={'locationOptions'}>
-            <div className={'changeLocation'}>{'Сменить город'}</div>
-            <button
-              className={position ? 'activeButton' : 'passiveButton'}
-              onClick={() => getPos()}
-            >
-              <div className={'locationOptions'}>
-                <img src="http://localhost:3000/location.svg"></img>
-                <div className={position ? 'activeLocation' : 'changeLocation'}>
-                  {'Мое местоположение'}
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-        <div>
-          <div className={'metricContainer'}>
-            {'°'}
-            <div className={'metric'}>
-              <button
-                className={'celsius'}
-                style={{
-                  backgroundColor:
-                    units === 'celsius'
-                      ? 'rgba(255, 255, 255, 0.3)'
-                      : 'rgba(255,255,255, 0)',
-                }}
-                onClick={() => setUnits('celsius')}
-              >
-                C
-              </button>
-              <button
-                className={'fahrenheit'}
-                style={{
-                  backgroundColor:
-                    units === 'fahrenheit'
-                      ? 'rgba(255, 255, 255, 0.3)'
-                      : 'rgba(255, 255, 255, 0)',
-                }}
-                onClick={() => setUnits('fahrenheit')}
-              >
-                F
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header
+        position={position}
+        units={units}
+        setPosition={setPosition}
+        locationName={data.location}
+        setUnits={setUnits}
+      />
       <div className={'main'}>
         <div className={'temperature'}>
           <img src={'http://localhost:3000/' + data.preset[0] + '.svg'}></img>
@@ -176,4 +129,4 @@ function App() {
   )
 }
 
-export default App
+export default Home

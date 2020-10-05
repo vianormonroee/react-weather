@@ -22,7 +22,7 @@ app.get('/getInfo', async (req, res) => {
 
   try {
     info = await axios.get(
-      `${apiUrl}?${weatherApiQuery}&lang=ru&appid=${WEATHER_API_KEY}`
+      encodeURI(`${apiUrl}?${weatherApiQuery}&lang=ru&appid=${WEATHER_API_KEY}`)
     )
   } catch (err) {
     res.json(err)
