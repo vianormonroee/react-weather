@@ -20,7 +20,7 @@ function Home() {
     setData(resData)
   }
 
-  function toFahrenheit(num) {
+  function convertToFahrenheit(num) {
     const fahrenheitTemp = num * (9 / 5) + 32
     return fahrenheitTemp.toFixed(0)
   }
@@ -43,7 +43,7 @@ function Home() {
             src={'http://localhost:3000/' + data.preset[0] + '.svg'}
           />
           <div className={'temperatureLabel'}>
-            {(units === 'fahrenheit' ? toFahrenheit(data.temp) : data.temp) +
+            {(units === 'fahrenheit' ? convertToFahrenheit(data.temp) : data.temp) +
               (units === 'celsius' ? '°' : '°F')}
           </div>
         </div>
