@@ -28,8 +28,6 @@ function Header({ position, units, locationName, setPosition, setUnits }) {
     setSearchText(event.target.value)
   }
 
-  console.log('header render')
-
   return (
     <div className={'head'}>
       {(searchMode && (
@@ -55,7 +53,7 @@ function Header({ position, units, locationName, setPosition, setUnits }) {
               onClick={getPos}
             >
               <div className={'locationOptions'}>
-                <img src="http://localhost:3000/location.svg"></img>
+                <img alt='' src="http://localhost:3000/location.svg" />
                 <div className={position ? 'activeLocation' : 'changeLocation'}>
                   {'Мое местоположение'}
                 </div>

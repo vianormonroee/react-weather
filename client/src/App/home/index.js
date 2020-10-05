@@ -9,7 +9,6 @@ function Home() {
   const [data, setData] = useState()
   const [position, setPosition] = useState()
   const [units, setUnits] = useState('celsius')
-  const [searchText, setSearchText] = useState('')
 
   useEffect(() => {
     getInfo(position)
@@ -79,13 +78,8 @@ function Home() {
     return fahrenheitTemp.toFixed(0)
   }
 
-  function onInputChange(event) {
-    setSearchText(event.target.value)
-  }
-
   if (!data) return null
 
-  console.log(searchText, 'st')
   return (
     <div className={'root'} style={{ backgroundColor: data.preset[1] }}>
       <Header
@@ -97,7 +91,7 @@ function Home() {
       />
       <div className={'main'}>
         <div className={'temperature'}>
-          <img src={'http://localhost:3000/' + data.preset[0] + '.svg'}></img>
+          <img alt='' src={'http://localhost:3000/' + data.preset[0] + '.svg'} />
           <div className={'temperatureLabel'}>
             {(units === 'fahrenheit' ? toFahrenheit(data.temp) : data.temp) +
               (units === 'celsius' ? '°' : '°F')}
