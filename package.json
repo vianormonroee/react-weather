@@ -5,6 +5,7 @@
   "author": "vianormonroe",
   "license": "MIT",
   "scripts": {
+    "build": "yarn install && yarn --cwd client install",
     "server": "nodemon server/index.js",
     "web": "yarn --cwd client run start",
     "dev": "concurrently \"yarn web\" \"yarn server\""
